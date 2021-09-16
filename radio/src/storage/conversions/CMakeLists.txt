@@ -1,5 +1,10 @@
 set(STORAGE_CONVERSIONS 219)
 
+if("${FLAVOUR}" STREQUAL "tpro")
+  set(STORAGE_CONVERSIONS 221)
+endif()
+message("Storage conversion: ${STORAGE_CONVERSIONS}")
+
 if(STORAGE_CONVERSIONS)
   add_definitions(-DSTORAGE_CONVERSIONS=${STORAGE_CONVERSIONS})
   set(SRC
