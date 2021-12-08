@@ -429,7 +429,7 @@ char *getSwitchName(char *dest, swsrc_t idx)
         strAppend(dest, g_eeGeneral.switchNames[swinfo.quot], LEN_SWITCH_NAME);
   } else {
     *dest++ = 'S';
-#if defined(PCBX7) && !defined(RADIO_TX12)
+#if defined(PCBX7) && !defined(RADIO_TX12) && !defined(RADIO_ZORRO)
     if (swinfo.quot >= 5)
       *dest++ = 'H' + swinfo.quot - 5;
     else if (swinfo.quot == 4)
