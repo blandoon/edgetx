@@ -146,12 +146,14 @@ uint32_t isBootloaderStart(const uint8_t * buffer);
 void SDRAM_Init();
 
 // Pulses driver
-#if defined(RADIO_T18)
+#if defined(RADIO_T18) || defined(RADIO_T16)
 
-// TX18S Workaround (see https://github.com/EdgeTX/edgetx/issues/802):
+// MPM Power Supply Workaround
+// (see https://github.com/EdgeTX/edgetx/issues/802)
 //   Add some delay after turning the internal module ON
-//   on the T18 / TX18S, as the latter seems to have issues
-//   with power supply showing instability
+//   on T18, TX18S due to power supply instability
+//   (also affects some early T16 units: see
+//   https://github.com/EdgeTX/edgetx/issues/1239)
 //
 #define INTERNAL_MODULE_ON()                                  \
   do {                                                        \
